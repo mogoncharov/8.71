@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
         minValue = minValue > 999 ? 999 : (minValue < -999 ? -999 : minValue);
         maxValue = maxValue > 999 ? 999 : (maxValue < -999 ? -999 : maxValue);
 
+        
         if (minValue >= maxValue) {
             showMessage("Минимальное значение должно быть меньше максимального!");
             return;
@@ -59,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     btnOver.addEventListener('click', function () {
         if (gameRun){
-            if (minValue === maxValue){
+            if (answerNumber === maxValue) {
                 const phraseRandom = Math.round( Math.random());
                 const answerPhrase = (phraseRandom === 1) ?
                     `Вы загадали неправильное число!\n\u{1F914}` :
@@ -79,13 +80,14 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     btnLess.addEventListener('click', function () {
+        
         if (gameRun){
-            if (minValue === maxValue){
+            if (answerNumber === minValue) {
                 const phraseRandom = Math.round(Math.random());
                 const answerPhrase = (phraseRandom === 1) ?
                     `Вы загадали неправильное число!\n\u{1F914}` :
                     `Я сдаюсь..\n\u{1F92F}`;
-
+    
                 answerField.innerText = answerPhrase;
                 gameRun = false;
             } else {
@@ -147,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const hundreds = ["", "сто", "двести", "триста", "четыреста", "пятьсот", "шестьсот", "семьсот", "восемьсот", "девятьсот"];
 
         if (number === 0) {
-            return "ноль";
+            return "0";
         }
 
         let result = "";
